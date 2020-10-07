@@ -1,15 +1,19 @@
+const rectangle = require('./rectangle');
 var rect = require('./rectangle');
 
 function solveRect(l,b){
     console.log("Solving for rectangle with l= "+l+" and b= "+b);
 
-    if(l<=0 || b<=0){
-        console.log("dimenssions should be grater than zero");
-    }
-    else{
-        console.log("The area of rectangle is: "+rect.area(l,b));
-        console.log("The perimeter of rectangle is: "+rect.perimeter(l,b));
-    }
+    rect(l,b,(err,rectangle)=>{
+        if(err){
+            console.log("ERROR: ",err.message);
+        }
+        else{
+            console.log("The area of rectangle is: "+rectangle.area());
+            console.log("The perimeter of rectangle is: "+rectangle.perimeter());
+        }
+    });
+    console.log("This statement after the call to react()");
 }
 
 solveRect(5,7);
